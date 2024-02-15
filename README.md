@@ -267,3 +267,70 @@ Relative to other destinations, flights to London have the most positive and mos
 
 Sentiment analysis was conducted to evaluate the range of emotions conveyed in the airline reviews and understand how customers feel about their travel experience. Sentiments were grouped as either positive or negative, and as seen in figure below, the emotions conveyed in the reviews were mostly positive.
 
+<img width="451" alt="image" src="https://github.com/kelechiu/Applying-Big-Data-Analytics-to-Airline-Reviews/assets/100145388/2000ec26-fd94-4c24-a0ef-253b248a6ded"> <img width="451" alt="image" src="https://github.com/kelechiu/Applying-Big-Data-Analytics-to-Airline-Reviews/assets/100145388/903a63df-ecb4-4408-b8e2-65d13e90dd6e">  <img width="341" alt="image" src="https://github.com/kelechiu/Applying-Big-Data-Analytics-to-Airline-Reviews/assets/100145388/6fed5e2d-8aee-472d-bd10-a2f8cf0f4962">
+
+## 5.6.	Trend Analysis
+
+I used a line plot to visualise the pattern of sentiments and ratings over the years. I found that positive sentiments peaked in 2015 and have gradually declined since then. Good ratings also peaked in 2015 and have declined in subsequent years. 
+
+<img width="451" alt="image" src="https://github.com/kelechiu/Applying-Big-Data-Analytics-to-Airline-Reviews/assets/100145388/8c6d5ed8-55e1-423e-8c39-e762c02611d0">  <img width="230" alt="image" src="https://github.com/kelechiu/Applying-Big-Data-Analytics-to-Airline-Reviews/assets/100145388/796aa97e-b226-4829-b601-c1a091c7f1c1">  <img width="218" alt="image" src="https://github.com/kelechiu/Applying-Big-Data-Analytics-to-Airline-Reviews/assets/100145388/cadd04d7-4a78-4a64-a19c-7ea2c657229f">
+
+# 6.	Hypothesis Testing
+
+Normality tests were not performed on this dataset because it has only discreet numerical variables (Rating and travel_year), and normality tests are carried out on continuous numerical variables
+
+## 6.1.	 Two-Way ANOVA Test
+
+The two-way ANOVA test was utilized to investigate the impact of two categorical independent variables on a numerical dependent variable (Rating). I also wanted to determine if there are significant differences in mean ratings across the different airline classes and traveller types. 
+
+H0: No Significant difference in Rating among Class and Traveller_Type.
+H1:  There is a significant difference in Rating among Class and Traveller_type
+
+<img width="256" alt="image" src="https://github.com/kelechiu/Applying-Big-Data-Analytics-to-Airline-Reviews/assets/100145388/e98ab387-b2c7-4b6f-a156-5cf64ecebf39">
+
+Figure above reveals a significant difference in the mean ratings across different traveller types and airline classes. At Fstatistic > 1.96 and P <0.05, the null hypothesis is rejected, and it can be concluded that the choice of airline class and reason for travel (traveller_type) influence the review rating. 
+
+## 6.2.	One-Way ANOVA Test
+
+The one-way ANOVA test was utilized to investigate the impact of one categorical independent variable on a numerical dependent variable (Rating). I also wanted to determine if there are significant differences in mean ratings across the different months in Travel_Month column. 
+
+H0: No significant difference in Rating among Travel_Month.
+H1: There is a significant difference in Rating among Travel_Month.
+
+<img width="322" alt="image" src="https://github.com/kelechiu/Applying-Big-Data-Analytics-to-Airline-Reviews/assets/100145388/d5b514e5-c618-4f14-a879-c7415eb9698a">
+
+Figure above reveals that there is no significant difference in the mean ratings across different travel months. At Fstatistic < 1.96 and P >0.05, the null hypothesis cannot be rejected. Therefore, it can be deduced that travel months do not influence overall ratings. 
+
+## 6.3.	Simple Linear Regression
+
+Simple linear regression was applied to investigate if the passenger characteristics significantly predicted airline Rating. One-Hot encoding was applied to Class variable with Economy to First class mapped as 1-4 to demonstrate class progression.
+
+H0: Traveller characteristics cannot predict the likelihood of a successful holiday booking.
+H1: Traveller characteristics can predict the likelihood of a successful holiday booking.
+
+<img width="327" alt="image" src="https://github.com/kelechiu/Applying-Big-Data-Analytics-to-Airline-Reviews/assets/100145388/17df561c-383b-426f-a95b-b0e100a3ff03">
+
+<img width="325" alt="image" src="https://github.com/kelechiu/Applying-Big-Data-Analytics-to-Airline-Reviews/assets/100145388/c83e056f-8800-46e7-9177-88b26f3bcf99">
+
+The fitted regression model1 is: 𝒚 = 3.95 + 𝟎. 𝟒3 ∗ 𝒙
+
+The overall regression is statistically significant (R2 = 0.020, p = < .001). R2 indicates that 2% of the variance in Rating can be explained by the Class. The fitted model indicates that if a passenger upgrades from Economy to upper classes like Business, Rating may increase by 0.43 units. Therefore, the null was rejected because passenger characteristics (Class) significantly predicted Rating. 
+
+ 
+
+# 7.	Conclusion
+
+In conclusion, this study presents a comprehensive analysis of customer satisfaction in the airline industry. Using various statistical methods, this paper examined a database of 3580 passenger reviews to provide guidelines for airlines companies to improve in customer service and competitiveness. 
+The exploratory data analysis revealed that low ratings were dominant across all passenger classes and passenger types, indicating that passengers are not satisfied with the airlines’ service and their travel experience. Flights to London received the most positive reviews and negative reviews due to punctuality and uncomfortable seating respectively. The results from the sentiment analysis revealed that emotions conveyed in the reviews were mostly positive. Additionally, the trend analysis revealed that good ratings peaked in 2015 and have been gradually declining since then, suggesting that customers were satisfied with their experience in 2015. 
+
+Using the two-way ANOVA test, this study found significant differences in average airline ratings across different traveller types and airline classes. Therefore, it rejects the null hypothesis and concludes that the choice of airline class and reason for travel (traveller_type) impact customer choices (review rating). The one-way ANOVA test revealed that there is no significant difference in average ratings across different travel months. Therefore, it cannot reject the null hypothesis and concludes that the timing of holiday bookings does not influence customer behaviour or overall ratings. 
+Finally, results from regression analysis highlighted that if a passenger upgrades from economy class to upper classes like business or first class, review ratings may increase by 0.43 units, concluding that passenger characteristics (class) significantly predict the likelihood of a successful holiday booking (rating).
+
+# 8.	Practical Implications 
+
+This research paper provides guidelines for airline companies to optimize their operations and remain competitive in the industry. It identifies the factors that affect customer satisfaction, enabling airline companies to optimise resource allocation and minimize disruptions. Insights from this analysis could also enhance customer experience by addressing common issues experienced by each passenger class.
+
+# 9.	Limitations
+
+Although this paper provided valuable insights into the factors that affect customer satisfaction within the airline industry, it is limited by its’ small and incomplete dataset. There were several missing values from traveller_type variable and external factors such as weather, air traffic and economic conditions that could impact airline service were omitted from the dataset. To supplement the findings in this research, additional analysis using a robust dataset that considers the aforementioned factors should be conducted. The results of this paper can also be enhanced by developing predictive models to forecast potential challenges, enabling airline companies to take timely and proactive measures.
+
